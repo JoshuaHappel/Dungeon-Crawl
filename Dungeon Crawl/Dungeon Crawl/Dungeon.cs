@@ -20,23 +20,9 @@ namespace DungeonCrawl
         private List<MobileObject> enemies = new List<MobileObject>();//list to hold the enemies in a dungeon floor
         private Room[,] dungeon = new Room[5, 5];//two dimensional array to hold rooms and serve as map each index is a room
         private int numberOfEnemies;
-        private bool exitUnlocked = false;
         private int exitXCoor;
         private int exitYCoor;
-        private Player player;
         private static int floor = 0;
-        internal Player Player
-        {
-            get
-            {
-                return player;
-            }
-
-            set
-            {
-                player = value;
-            }
-        }
         internal List<MobileObject> Enemies
         {
             get
@@ -63,18 +49,27 @@ namespace DungeonCrawl
         }
         public Dungeon(Player p)
         {
-            player = p;
-            Ally ally1 = new Ally("Taako", 25, 6, 1, 4, new Mage());
-            Ally ally2 = new Ally("Magnus", 50, 1, 7, 3, new Fighter());
-            ally1.ColumnLoc = rand1.Next(5);
-            ally1.RowLoc = rand1.Next(5);
-            ally2.ColumnLoc = rand1.Next(5);
-            ally2.RowLoc = rand1.Next(5);
-
+            Ally ally1 = new Ally("Taako", 25, 6, 1, 4, null);
+            Ally ally2 = new Ally("Magnus", 50, 1, 7, 3, null);
+            ally1.XCoor = rand1.Next(5);
+            ally1.YCoor = rand1.Next(5);
+            ally2.XCoor = rand1.Next(5);
+            ally2.YCoor = rand1.Next(5);
             createMap();
-
-            dungeon[ally1.ColumnLoc, ally1.RowLoc].Ally1 = ally1;
-            dungeon[ally2.ColumnLoc, ally2.RowLoc].Ally2 = ally2;
+            dungeon[ally1.XCoor, ally1.YCoor].Ally1 = ally1;
+            dungeon[ally2.XCoor, ally2.YCoor].Ally2 = ally2;
+        }
+        public Dungeon()
+        {
+            Ally ally1 = new Ally("Taako", 25, 6, 1, 4, null);
+            Ally ally2 = new Ally("Magnus", 50, 1, 7, 3, null);
+            ally1.XCoor = rand1.Next(5);
+            ally1.YCoor = rand1.Next(5);
+            ally2.XCoor = rand1.Next(5);
+            ally2.YCoor = rand1.Next(5);
+            createMap();
+            dungeon[ally1.XCoor, ally1.YCoor].Ally1 = ally1;
+            dungeon[ally2.XCoor, ally2.YCoor].Ally2 = ally2;
         }
         public void createMap()
         {
@@ -113,74 +108,51 @@ namespace DungeonCrawl
                 if (enemytype <= 3)
                 {
                     Wraith w = new Wraith();
-                    w.RowLoc = rand1.Next(4) + 1;
-                    w.ColumnLoc = rand1.Next(4) + 1;
+                    w.XCoor = rand1.Next(4) + 1;
+                    w.YCoor = rand1.Next(4) + 1;
                     Enemies.Add(w);
                 }
                 else if (enemytype <= 5)
                 {
                     Goblin g = new Goblin();
-                    g.RowLoc = rand1.Next(4) + 1;
-                    g.ColumnLoc = rand1.Next(4) + 1;
+                    g.XCoor = rand1.Next(4) + 1;
+                    g.YCoor = rand1.Next(4) + 1;
                     Enemies.Add(g);
                 }
                 else if (enemytype <= 7)
                 {
                     Sorcerer s = new Sorcerer();
-                    s.RowLoc = rand1.Next(4) + 1;
-                    s.ColumnLoc = rand1.Next(4) + 1;
+                    s.XCoor = rand1.Next(4) + 1;
+                    s.YCoor = rand1.Next(4) + 1;
                     Enemies.Add(s);
                 }
                 else if (enemytype <= 9)
                 {
                     Orc o = new Orc();
-                    o.ColumnLoc = rand1.Next(4) + 1;
-                    o.RowLoc = rand1.Next(4) + 1;
+                    o.XCoor = rand1.Next(4) + 1;
+                    o.YCoor = rand1.Next(4) + 1;
                     Enemies.Add(o);
                 }
                 else if (enemytype <= 10)
                 {
                     Uruk_Hai u = new Uruk_Hai();
-                    u.RowLoc = rand1.Next(4) + 1;
-                    u.ColumnLoc = rand1.Next(4) + 1;
+                    u.XCoor = rand1.Next(4) + 1;
+                    u.YCoor = rand1.Next(4) + 1;
                 }
             }
-            
+            foreach (MobileObject m in enemies)
+            {
+                dungeon[m.XCoor, m.YCoor].Enemies.Add(m);
+            }
         }
         public void unlockExit()
         {
-            exitUnlocked = true;
-            dungeon[exitXCoor, exitYCoor].OpenExit = true;
+            
         }
-        public void movePlayer(int oldXCoor, int oldYCoor, int newXCoor, int newYCoor)
+        
+        public Room getCurrentRoom(Player player)
         {
-            if (newXCoor > 4)
-                newXCoor = 4;
-            if (newYCoor > 4)
-                newYCoor = 4;
-            if (newXCoor < 0)
-                newXCoor = 0;
-            if (newYCoor < 0)
-                newYCoor = 0;
-            dungeon[oldYCoor, oldXCoor].playerExit();
-            dungeon[newYCoor, newXCoor].playerEnter();
-        }
-        public void moveEnemy( int oldXCoor, int oldYCoor, int newXCoor, int newYCoor, MobileObject m)
-        {
-            if (newXCoor > 4)
-                newXCoor = 4;
-            if (newYCoor > 4)
-                newYCoor = 4;
-            if (newXCoor < 0)
-                newXCoor = 0;
-            if (newYCoor < 0)
-                newYCoor = 0;
-            dungeon[oldYCoor, oldXCoor].enemyExit(m);
-            dungeon[newYCoor, newXCoor].enemyEnter(m);
-        }
-        public Room getCurrentRoom(int x, int y)
-        {
-            return dungeon[x, y];
+            return dungeon[player.XCoor, player.YCoor];
         }
     }
 }

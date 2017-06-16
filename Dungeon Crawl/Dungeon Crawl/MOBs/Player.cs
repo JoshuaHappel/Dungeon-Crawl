@@ -77,33 +77,7 @@ namespace DungeonCrawl
         }
         public void OnCombatStart(Dungeon d)
         {
-            if (d.getCurrentRoom(RowLoc, ColumnLoc).Enemy)
-            {
-                if (d.getCurrentRoom(RowLoc, ColumnLoc).Player)
-                {
-                    List<MobileObject> enemies = d.getCurrentRoom(RowLoc, ColumnLoc).Enemies;
-                    d.getCurrentRoom(RowLoc, ColumnLoc).Enemy = false; 
-                    MobileObject enemy1 = enemies.FirstOrDefault();
-                    d.Enemies.Remove(enemy1);
-                    enemies.Remove(enemies.FirstOrDefault());
-                    MobileObject enemy2 = enemies.FirstOrDefault();
-                    enemies.Remove(enemies.FirstOrDefault());
-                    d.Enemies.Remove(enemy2);
-                    MobileObject enemy3 = enemies.FirstOrDefault();
-                    enemies.Remove(enemies.FirstOrDefault());
-                    d.Enemies.Remove(enemy3);
-                    Ally ally1 = party.FirstOrDefault();
-                    party.Remove(ally1);
-                    Ally ally2 = party.FirstOrDefault();
-                    party.Remove(ally2);
-                    Form.Ally1 = ally1;
-                    Form.Ally2 = ally2;
-                    Form.Enemy1 = enemy1;
-                    Form.Enemy2 = enemy2;
-                    Form.Enemy3 = enemy3;
-                    Form.startCombat();
-                }
-            }
+            
         }
         public void useItem(string str, MobileObject m)
         {
@@ -119,28 +93,11 @@ namespace DungeonCrawl
         }
         public void pullLever(Dungeon d)
         {
-            //if(d.getCurrentRoom(RowLoc, ColumnLoc).HasLever)
             
-                d.getCurrentRoom(PcolumnLoc, ProwLoc).Lever.Pulled = true;
-            d.getCurrentRoom(PcolumnLoc, ProwLoc).Lever = null;
-
-
-            if (Lever.getNumberOfPulledLevers() == 4)
-            {
-                d.unlockExit();
-            }
         }
         public void interact(string item, Dungeon d)
         {
-            foreach (Item i in d.getCurrentRoom(PcolumnLoc, ProwLoc).Items)
-            {
-                if(i.ItemName.Equals(item))
-                {
-                    items.Add(i);
-                    d.getCurrentRoom(PcolumnLoc, ProwLoc).Items.Remove(i);
-                    break;
-                }
-            }
+            
         }
         public override string ToString()
         {

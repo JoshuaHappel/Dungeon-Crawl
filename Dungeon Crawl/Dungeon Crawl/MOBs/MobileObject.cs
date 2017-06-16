@@ -7,13 +7,9 @@ namespace DungeonCrawl
     public class MobileObject
     {
         Form1 form;
-        private string name = "";
-        private int columnLoc = 0;
-        private int rowLoc = 0;
-        private int pcolumnLoc = 0;
-        private int prowLoc = 0;
-        private int pOldXLoc = 0;
-        private int pOldYLoc = 0;
+        private string name = "";//name
+        private int xCoor = 0;//x cooridinate 
+        private int yCoor = 0;//y cooridinate
         private int hitPoints = 0;
         private int armorClass = 0;
         private int strength = 0;
@@ -93,30 +89,6 @@ namespace DungeonCrawl
                 magicPower = value;
             }
         }
-        public int ColumnLoc
-        {
-            get
-            {
-                return columnLoc;
-            }
-
-            set
-            {
-                columnLoc = value;
-            }
-        }
-        public int RowLoc
-        {
-            get
-            {
-                return rowLoc;
-            }
-
-            set
-            {
-                rowLoc = value;
-            }
-        }
         public Form1 Form
         {
             get
@@ -153,30 +125,6 @@ namespace DungeonCrawl
                 magicWeaponBonus = value;
             }
         }
-        public int PcolumnLoc
-        {
-            get
-            {
-                return pcolumnLoc;
-            }
-
-            set
-            {
-                pcolumnLoc = value;
-            }
-        }
-        public int ProwLoc
-        {
-            get
-            {
-                return prowLoc;
-            }
-
-            set
-            {
-                prowLoc = value;
-            }
-        }
         public string Name
         {
             get
@@ -189,6 +137,33 @@ namespace DungeonCrawl
                 name = value;
             }
         }
+
+        public int XCoor
+        {
+            get
+            {
+                return xCoor;
+            }
+
+            set
+            {
+                xCoor = value;
+            }
+        }
+
+        public int YCoor
+        {
+            get
+            {
+                return yCoor;
+            }
+
+            set
+            {
+                yCoor = value;
+            }
+        }
+
         public void getMap(Form1 form)
         {
             this.Form = form;
@@ -218,56 +193,6 @@ namespace DungeonCrawl
         }
         public void go(string direction, Dungeon d)
         {
-            pOldXLoc = PcolumnLoc;
-            pOldYLoc = ProwLoc;
-            switch (direction)
-            {
-                case "north":
-                    ProwLoc -= 1;
-                    if (ProwLoc < 0)
-                        ProwLoc = 0;
-                    break;
-                case "south":
-                    ProwLoc += 1;
-                    if (ProwLoc > 4)
-                        ProwLoc = 4;
-                    break;
-                case "west":
-                    PcolumnLoc -= 1;
-                    if (PcolumnLoc < 0)
-                        PcolumnLoc = 0;
-                    break;
-                case "east":
-                    PcolumnLoc += 1;
-                    if (PcolumnLoc > 4)
-                        PcolumnLoc = 4;
-                    break;
-            }
-            d.movePlayer(pOldXLoc, pOldYLoc, PcolumnLoc, ProwLoc);
-            Form.updatePosition(PcolumnLoc, ProwLoc);
-            if (d.getCurrentRoom(rowLoc, columnLoc).Enemy)
-            {
-                d.Player.OnCombatStart(d);
-            }
-            else
-            {
-                
-                if (d.Player.MadeNoise)
-                {
-                    foreach (Enemy e in d.Enemies)
-                    {
-                        npcSeekingMove(d,e, d.Player);
-                    }
-                }
-                else
-                {
-                    foreach (Enemy e in d.Enemies)
-                    {
-                        npcIdleMove(d, e);
-                    }
-                }
-                
-            }
             
         }
         public override string ToString()
@@ -285,74 +210,14 @@ namespace DungeonCrawl
         }
         public void goNPC(string direction, Dungeon d)
         {
-            int oldX = ColumnLoc;
-            int oldY = RowLoc;
-            switch (direction)
-            {
-                case "north":
-                    RowLoc -= 1;
-                    if (RowLoc < 0)
-                        RowLoc = 0;
-                    break;
-                case "south":
-                    RowLoc += 1;
-                    if (RowLoc > 4)
-                        RowLoc = 4;
-                    break;
-                case "west":
-                    ColumnLoc -= 1;
-                    if (ColumnLoc < 0)
-                        ColumnLoc = 0;
-                    break;
-                case "east":
-                    ColumnLoc += 1;
-                    if (ColumnLoc > 4)
-                        ColumnLoc = 4;
-                    break;
-            }
-            foreach (MobileObject m in d.Enemies)
-            {
-                d.moveEnemy(oldY, oldX, RowLoc, ColumnLoc, m);
-            }
-            if (d.getCurrentRoom(rowLoc, columnLoc).Player)
-            {
-                d.Player.OnCombatStart(d);
-            }
+            
         }
         public void npcIdleMove(Dungeon d, MobileObject e)
         {
-            int oldX = ColumnLoc;
-            int oldY = RowLoc;
+            
             Random rand1 = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
         //if direction is = to zero npc will not move this gives a chance an npc will do nothing while in idle state
-        int direction = rand1.Next(5);
-            if(direction == 1)
-            {
-                RowLoc -= 1;
-                if (RowLoc < 0)
-                {
-                    RowLoc = 0;
-                }
-            }
-            if(direction == 2)
-            {
-                RowLoc += 1;
-                if (RowLoc > 4)
-                    RowLoc = 4;
-            }
-            if (direction == 3)
-            {
-                ColumnLoc -= 1;
-                if (ColumnLoc < 0)
-                    ColumnLoc = 0;
-            }
-            if(direction == 4)
-            {
-                ColumnLoc += 1;
-                if (ColumnLoc > 4)
-                    ColumnLoc = 4;
-            }
-            d.moveEnemy(oldX, oldY, ColumnLoc, RowLoc, e);
+       
         }
         /**
         this method is called if the player alerts the enemies the npcs know where the player is and now are seeking I subtract the enemy's location from the player's
@@ -360,26 +225,7 @@ namespace DungeonCrawl
         */
         public void npcSeekingMove(Dungeon d, MobileObject e, Player play)
         {
-            int xDifference;
-            int yDifference;
-            xDifference = (play.RowLoc - rowLoc);
-            yDifference = (play.ColumnLoc - columnLoc);
-            if(xDifference < 0)
-            {
-                goNPC("east", d);
-            }
-            else if (xDifference > 0)
-            {
-                goNPC("west", d);
-            }
-            else if (yDifference < 0)
-            {
-                goNPC("north", d);
-            }
-            else if (yDifference > 0)
-            {
-                goNPC("south", d);
-            }
+            
         }
     }
 }

@@ -8,3 +8,13 @@ C:\Users\happe\OneDrive\Documents\Visual Studio 2015\Projects\Dungeon Crawl\Dung
 C:\Users\happe\OneDrive\Documents\Visual Studio 2015\Projects\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon Crawl.pdb
 C:\Users\happe\onedrive\documents\visual studio 2015\Projects\Dungeon Crawl\Dungeon Crawl\obj\Debug\DungeonCrawl.Form1.resources
 C:\Users\happe\onedrive\documents\visual studio 2015\Projects\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon_Crawl.CombatWindow.resources
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\bin\Debug\Dungeon Crawl.exe.config
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon Crawl.exe
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon Crawl.pdb
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon Crawl.csprojResolveAssemblyReference.cache
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon_Crawl.CombatWindow.resources
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\DungeonCrawl.Form1.resources
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon_Crawl.Properties.Resources.resources
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon Crawl.csproj.GenerateResource.Cache
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\bin\Debug\Dungeon Crawl.exe
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\bin\Debug\Dungeon Crawl.pdb

@@ -72,6 +72,12 @@
     <Compile Include="MOBs\Enemies\Wraith.cs" />
     <Compile Include="MOBs\MobileObject.cs" />
     <Compile Include="MOBs\Player.cs" />
+    <Compile Include="PlayerInfoScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerInfoScreen.Designer.cs">
+      <DependentUpon>PlayerInfoScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
@@ -96,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Soldier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Soldier flip.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

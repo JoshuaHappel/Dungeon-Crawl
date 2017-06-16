@@ -34,7 +34,7 @@ namespace Dungeon_Crawl
         public static int getItemDBLength()
         {
             int i = 0;
-            String sql = "SELECT ID FROM Items";
+            String sql = "SELECT MAX(ID) FROM Items";
             OleDbConnection itemDB = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.4.0; Data Source = Items.mdb");
             itemDB.Open();
             OleDbDataReader reader = null;
@@ -44,8 +44,9 @@ namespace Dungeon_Crawl
             reader = command.ExecuteReader();
             while(reader.Read())
             {
-                i++;
+                i = reader.GetInt32(0);
             }
+            itemDB.Close();
             return i;
         }
     }
