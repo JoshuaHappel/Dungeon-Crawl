@@ -56,8 +56,6 @@ namespace DungeonCrawl
             ally2.XCoor = rand1.Next(5);
             ally2.YCoor = rand1.Next(5);
             createMap();
-            dungeon[ally1.XCoor, ally1.YCoor].Ally1 = ally1;
-            dungeon[ally2.XCoor, ally2.YCoor].Ally2 = ally2;
         }
         public Dungeon()
         {
@@ -68,8 +66,6 @@ namespace DungeonCrawl
             ally2.XCoor = rand1.Next(5);
             ally2.YCoor = rand1.Next(5);
             createMap();
-            dungeon[ally1.XCoor, ally1.YCoor].Ally1 = ally1;
-            dungeon[ally2.XCoor, ally2.YCoor].Ally2 = ally2;
         }
         public void createMap()
         {
@@ -93,7 +89,7 @@ namespace DungeonCrawl
             }
             exitYCoor = rand1.Next(5);//puts the exit somewhere
             exitXCoor = rand1.Next(5);
-            dungeon[exitXCoor, exitYCoor].Exit = true;
+            dungeon[exitXCoor, exitYCoor].DungeonExit = true;
             int numberOfDifferentItems = SQL_DAO.getItemDBLength();
             for (int i = 0; i < numberOfItems; i++)
             {
@@ -142,7 +138,7 @@ namespace DungeonCrawl
             }
             foreach (MobileObject m in enemies)
             {
-                dungeon[m.XCoor, m.YCoor].Enemies.Add(m);
+                dungeon[m.XCoor, m.YCoor].MOBList.Add(m);
             }
         }
         public void unlockExit()
@@ -150,9 +146,9 @@ namespace DungeonCrawl
             
         }
         
-        public Room getCurrentRoom(Player player)
+        public Room getCurrentRoom(MobileObject MOB)
         {
-            return dungeon[player.XCoor, player.YCoor];
+            return dungeon[MOB.XCoor, MOB.YCoor];
         }
     }
 }

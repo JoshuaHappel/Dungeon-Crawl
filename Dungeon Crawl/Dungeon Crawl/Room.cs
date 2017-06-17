@@ -11,21 +11,15 @@ namespace DungeonCrawl
         private bool player = false;//true if player is in the room
         private bool enemy = false;
         private List<Item> items = new List<Item>();
-        private List<MobileObject> enemies = new List<MobileObject>();
+        private List<MobileObject> MOBS = new List<MobileObject>();
         private bool doorLocked = false;
-        private Ally ally1;
-        private Ally ally2;
-        private Player play;
+        private Player playerObject;
         private Lever lever;
         private bool hasLever = false;
-        private bool exit = false;
+        private bool dungeonExit = false;
         private bool openExit = false;
 
-        public Player playerObject
-        {
-            get { return play; }
-            set { play = value; }
-        }
+        
         public bool Enemy
         {
             get
@@ -52,16 +46,16 @@ namespace DungeonCrawl
             }
         }
 
-        internal List<MobileObject> Enemies
+        internal List<MobileObject> MOBList
         {
             get
             {
-                return enemies;
+                return MOBS;
             }
 
             set
             {
-                enemies = value;
+                MOBS = value;
             }
         }
 
@@ -92,16 +86,16 @@ namespace DungeonCrawl
             }
         }
 
-        public bool Exit
+        public bool DungeonExit
         {
             get
             {
-                return exit;
+                return dungeonExit;
             }
 
             set
             {
-                exit = value;
+                dungeonExit = value;
             }
         }
 
@@ -117,32 +111,7 @@ namespace DungeonCrawl
                 openExit = value;
             }
         }
-
-        public Ally Ally2
-        {
-            get
-            {
-                return ally2;
-            }
-
-            set
-            {
-                ally2 = value;
-            }
-        }
-
-        public Ally Ally1
-        {
-            get
-            {
-                return ally1;
-            }
-
-            set
-            {
-                ally1 = value;
-            }
-        }
+        
 
         internal List<Item> Items
         {
@@ -165,27 +134,29 @@ namespace DungeonCrawl
         {
             items.Add(i);
         }
-        public void playerEnter()
+        public void Enter(MobileObject MobileOb)
         {
-            Player = true;
+            
+            MOBList.Add(MobileOb);
         }
-        public void playerExit()
+        public void Exit(MobileObject MobileOb)
         {
-            Player = false;
+            player = false;
+            removeEntFromList(MobileOb);
         }
-        public void enemyEnter(MobileObject e)
+        private void removeEntFromList(MobileObject MobileOb)
         {
-            Enemies.Add(e);
-            Enemy = true;
-        }
-        public void enemyExit(MobileObject e)
-        {
-            Enemies.Remove(e);
-            if (Enemies.FirstOrDefault() == null)
+            foreach (MobileObject m in MOBList)
             {
-                Enemy = false;
+                
+                if(m.Equals(MobileOb))
+                {
+                    MOBList.Remove(m);
+                    break;
+                }
             }
         }
+        
         public bool isDoorLocked()
         {
             return doorLocked;

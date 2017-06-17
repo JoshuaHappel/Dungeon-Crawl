@@ -191,9 +191,33 @@ namespace DungeonCrawl
         {
             charClass.Special(this, target);
         }
-        public void go(string direction, Dungeon d)
+        public void go(int direction, Dungeon d)
         {
-            
+            d.getCurrentRoom(this).Exit(this);
+            switch(direction)
+            {
+                case 0://north
+                    yCoor -= 1;
+                    if (yCoor < 0)
+                        yCoor = 0;
+                    break;
+                case 1://south
+                    yCoor += 1;
+                    if (yCoor > 4)
+                        yCoor = 4;
+                    break;
+                case 2://east
+                    xCoor += 1;
+                    if (xCoor > 4)
+                        xCoor = 4;
+                    break;
+                case 3://west
+                    xCoor -= 1;
+                    if (xCoor < 0)
+                        xCoor = 0;
+                    break;
+           }
+           d.getCurrentRoom(this).Enter(this);
         }
         public override string ToString()
         {

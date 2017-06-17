@@ -25,6 +25,7 @@ namespace DungeonCrawl
             populateMapArray();
             dung = new Dungeon();
             play = new Player();
+            map[play.XCoor, play.YCoor].BackColor = Color.Black;
             showRoomInventory();
         }
         private void populateMapArray()
@@ -62,22 +63,34 @@ namespace DungeonCrawl
 
         private void northButton1_Click(object sender, EventArgs e)
         {
-            
+            map[play.XCoor, play.YCoor].BackColor = Color.DarkSlateGray;
+            play.go((int)Directions.NORTH, dung);
+            map[play.XCoor, play.YCoor].BackColor = Color.Black;
+            showRoomInventory();
         }
 
         private void westButton3_Click(object sender, EventArgs e)
         {
-
+            map[play.XCoor, play.YCoor].BackColor = Color.DarkSlateGray;
+            play.go((int)Directions.WEST, dung);
+            map[play.XCoor, play.YCoor].BackColor = Color.Black;
+            showRoomInventory();
         }
 
         private void southButton2_Click(object sender, EventArgs e)
         {
-
+            map[play.XCoor, play.YCoor].BackColor = Color.DarkSlateGray;
+            play.go((int)Directions.SOUTH, dung);
+            map[play.XCoor, play.YCoor].BackColor = Color.Black;
+            showRoomInventory();
         }
 
         private void eastButton4_Click(object sender, EventArgs e)
         {
-
+            map[play.XCoor, play.YCoor].BackColor = Color.DarkSlateGray;
+            play.go((int)Directions.EAST, dung);
+            map[play.XCoor, play.YCoor].BackColor = Color.Black;
+            showRoomInventory();
         }
         private void Interact_Click(object sender, EventArgs e)
         {
@@ -85,6 +98,7 @@ namespace DungeonCrawl
         }
         public void showRoomInventory()
         {
+            roomListBox.Items.Clear();
             foreach (Item i in dung.getCurrentRoom(play).Items)
             {
                 roomListBox.Items.Add(i.ItemName);
