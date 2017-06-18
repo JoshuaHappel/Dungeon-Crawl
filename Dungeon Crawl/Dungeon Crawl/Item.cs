@@ -85,6 +85,10 @@ namespace Dungeon_Crawl
         {
 
         }
-        
+        public override string ToString()
+        {
+
+            return ItemName;
+        }
     }
 }

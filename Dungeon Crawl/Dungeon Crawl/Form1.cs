@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using DungeonCrawl.UnitClasses;
+using System.Linq;
 using Dungeon_Crawl;
 /**
 * Joshua Happel
@@ -26,7 +27,7 @@ namespace DungeonCrawl
             dung = new Dungeon();
             play = new Player();
             map[play.XCoor, play.YCoor].BackColor = Color.Black;
-            showRoomInventory();
+            
         }
         private void populateMapArray()
         {
@@ -94,7 +95,9 @@ namespace DungeonCrawl
         }
         private void Interact_Click(object sender, EventArgs e)
         {
-            
+            play.pickUpItem(dung.getCurrentRoom(play).Items.ElementAt(roomListBox.SelectedIndex));
+            dung.getCurrentRoom(play).Items.Remove(dung.getCurrentRoom(play).Items.ElementAt(roomListBox.SelectedIndex));
+            showRoomInventory();
         }
         public void showRoomInventory()
         {
@@ -105,241 +108,6 @@ namespace DungeonCrawl
             }
         }
         
-        public void updatePosition(int xCoor, int yCoor)
-        {
-            if (oldXCoor == 0)
-            {
-                if (oldYCoor == 0)
-                {
-                    label00.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 1)
-                {
-                    label01.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 2)
-                {
-                    label02.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 3)
-                {
-                    label03.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 4)
-                {
-                    label04.BackColor = Color.Gray;
-                }
-            }
-            if (oldXCoor == 1)
-            {
-                if (oldYCoor == 0)
-                {
-                    label10.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 1)
-                {
-                    label11.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 2)
-                {
-                    label12.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 3)
-                {
-                    label13.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 4)
-                {
-                    label14.BackColor = Color.Gray;
-                }
-            }
-            if (oldXCoor == 2)
-            {
-                if (oldYCoor == 0)
-                {
-                    label20.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 1)
-                {
-                    label21.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 2)
-                {
-                    label22.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 3)
-                {
-                    label23.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 4)
-                {
-                    label24.BackColor = Color.Gray;
-                }
-            }
-            if (oldXCoor == 3)
-            {
-                if (oldYCoor == 0)
-                {
-                    label30.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 1)
-                {
-                    label31.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 2)
-                {
-                    label32.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 3)
-                {
-                    label33.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 4)
-                {
-                    label34.BackColor = Color.Gray;
-                }
-            }
-            if (oldXCoor == 4)
-            {
-                if (oldYCoor == 0)
-                {
-                    label40.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 1)
-                {
-                    label41.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 2)
-                {
-                    label42.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 3)
-                {
-                    label43.BackColor = Color.Gray;
-                }
-                if (oldYCoor == 4)
-                {
-                    label44.BackColor = Color.Gray;
-                }
-            }
-            if (xCoor == 0)
-            {
-                if (yCoor == 0)
-                {
-                    label00.BackColor = Color.Black;
-                }
-                if (yCoor == 1)
-                {
-                    label01.BackColor = Color.Black;
-                }
-                if (yCoor == 2)
-                {
-                    label02.BackColor = Color.Black;
-                }
-                if (yCoor == 3)
-                {
-                    label03.BackColor = Color.Black;
-                }
-                if (yCoor == 4)
-                {
-                    label04.BackColor = Color.Black;
-                }
-            }
-            if (xCoor == 1)
-            {
-                if (yCoor == 0)
-                {
-                    label10.BackColor = Color.Black;
-                }
-                if (yCoor == 1)
-                {
-                    label11.BackColor = Color.Black;
-                }
-                if (yCoor == 2)
-                {
-                    label12.BackColor = Color.Black;
-                }
-                if (yCoor == 3)
-                {
-                    label13.BackColor = Color.Black;
-                }
-                if (yCoor == 4)
-                {
-                    label14.BackColor = Color.Black;
-                }
-            }
-            if (xCoor == 2)
-            {
-                if (yCoor == 0)
-                {
-                    label20.BackColor = Color.Black;
-                }
-                if (yCoor == 1)
-                {
-                    label21.BackColor = Color.Black;
-                }
-                if (yCoor == 2)
-                {
-                    label22.BackColor = Color.Black;
-                }
-                if (yCoor == 3)
-                {
-                    label23.BackColor = Color.Black;
-                }
-                if (yCoor == 4)
-                {
-                    label24.BackColor = Color.Black;
-                }
-            }
-            if (xCoor == 3)
-            {
-                if (yCoor == 0)
-                {
-                    label30.BackColor = Color.Black;
-                }
-                if (yCoor == 1)
-                {
-                    label31.BackColor = Color.Black;
-                }
-                if (yCoor == 2)
-                {
-                    label32.BackColor = Color.Black;
-                }
-                if (yCoor == 3)
-                {
-                    label33.BackColor = Color.Black;
-                }
-                if (yCoor == 4)
-                {
-                    label34.BackColor = Color.Black;
-                }
-            }
-            if (xCoor == 4)
-            {
-                if (yCoor == 0)
-                {
-                    label40.BackColor = Color.Black;
-                }
-                if (yCoor == 1)
-                {
-                    label41.BackColor = Color.Black;
-                }
-                if (yCoor == 2)
-                {
-                    label42.BackColor = Color.Black;
-                }
-                if (yCoor == 3)
-                {
-                    label43.BackColor = Color.Black;
-                }
-                if (yCoor == 4)
-                {
-                    label44.BackColor = Color.Black;
-                }
-            }
-            oldXCoor = xCoor;
-            oldYCoor = yCoor;
-        }
   
         
         

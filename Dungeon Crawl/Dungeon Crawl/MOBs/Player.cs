@@ -99,6 +99,10 @@ namespace DungeonCrawl
         {
             
         }
+        public void pickUpItem(Item i)
+        {
+            items.Add(i);
+        }
         public override string ToString()
         {
             return base.ToString();
