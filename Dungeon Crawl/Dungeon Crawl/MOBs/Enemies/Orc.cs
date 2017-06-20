@@ -12,8 +12,6 @@ namespace DungeonCrawl.MOBs.Enemies
         {
             HP = 35;
             Strength = 5;
-            WeaponBonus = 2;
-            ArmorClass = 4;
             Speed = 3;
             CanAttack = true;
             Name = "Orc";

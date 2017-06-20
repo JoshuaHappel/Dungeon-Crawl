@@ -18,3 +18,4 @@ C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\
 C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon Crawl.csproj.GenerateResource.Cache
 C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\bin\Debug\Dungeon Crawl.exe
 C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\bin\Debug\Dungeon Crawl.pdb
+C:\Users\happe\Source\Repos\Dungeon-Crawl\Dungeon Crawl\Dungeon Crawl\obj\Debug\Dungeon_Crawl.PlayerInfoScreen.resources

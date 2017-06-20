@@ -13,8 +13,6 @@ namespace DungeonCrawl.MOBs.Enemies
         {
             HP = 30;
             Strength = 5;
-            WeaponBonus = 2;
-            ArmorClass = 4;
             Speed = 4;
             CanAttack = true;
             Name = "Bounty Hunter";

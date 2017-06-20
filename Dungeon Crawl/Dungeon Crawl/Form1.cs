@@ -99,6 +99,15 @@ namespace DungeonCrawl
             dung.getCurrentRoom(play).Items.Remove(dung.getCurrentRoom(play).Items.ElementAt(roomListBox.SelectedIndex));
             showRoomInventory();
         }
+
+        private void openPlayerInfo_Click(object sender, EventArgs e)
+        {
+            PlayerInfoScreen pis = new PlayerInfoScreen();
+            pis.Play = play;
+            pis.Show(this);
+            this.Hide();
+        }
+
         public void showRoomInventory()
         {
             roomListBox.Items.Clear();

@@ -12,8 +12,6 @@ namespace DungeonCrawl.MOBs.Enemies
         {
             HP = 10;
             Strength = 1;
-            WeaponBonus = 1;
-            ArmorClass = 1;
             Speed = 6;
             CanAttack = true;
             Name = "Goblin";

@@ -2,6 +2,8 @@
 using System.Text;
 using DungeonCrawl.UnitClasses;
 using DungeonCrawl.MOBs.Enemies;
+using Dungeon_Crawl;
+
 namespace DungeonCrawl
 {
     public class MobileObject
@@ -11,10 +13,11 @@ namespace DungeonCrawl
         private int xCoor = 0;//x cooridinate 
         private int yCoor = 0;//y cooridinate
         private int hitPoints = 0;
-        private int armorClass = 0;
+        private int maxHP = 0;
+        private Item equippedArmor = null;
+        private Item equippedWeapon = null;
         private int strength = 0;
         private int magicPower = 0;
-        private int weaponBonus = 0;
         private int magicWeaponBonus = 0;
         private bool canAttack = false;
         private int speed = 0;
@@ -25,6 +28,12 @@ namespace DungeonCrawl
         public MobileObject()
         {
 
+        }
+        public MobileObject(string name, int hp)
+        {
+            this.name = name;
+            hitPoints = hp;
+            MaxHP = hp;
         }
         public int Level
         {
@@ -59,14 +68,10 @@ namespace DungeonCrawl
             get { return hitPoints; }
             set { hitPoints = value; }
         }
-        public int ArmorClass
-        {
-            get { return armorClass; }
-            set { armorClass = value; }
-        }
+        
         public int Damage
         {
-            get { return (Strength + WeaponBonus); }
+            get { return (Strength); }
         }
         public int MagicDamage
         {
@@ -101,18 +106,7 @@ namespace DungeonCrawl
                 form = value;
             }
         }
-        public int WeaponBonus
-        {
-            get
-            {
-                return weaponBonus;
-            }
-
-            set
-            {
-                weaponBonus = value;
-            }
-        }
+        
         public int MagicWeaponBonus
         {
             get
@@ -161,6 +155,45 @@ namespace DungeonCrawl
             set
             {
                 yCoor = value;
+            }
+        }
+
+        public Item EquippedArmor
+        {
+            get
+            {
+                return equippedArmor;
+            }
+
+            set
+            {
+                equippedArmor = value;
+            }
+        }
+
+        public Item EquippedWeapon
+        {
+            get
+            {
+                return equippedWeapon;
+            }
+
+            set
+            {
+                equippedWeapon = value;
+            }
+        }
+
+        public int MaxHP
+        {
+            get
+            {
+                return maxHP;
+            }
+
+            set
+            {
+                maxHP = value;
             }
         }
 
@@ -226,9 +259,7 @@ namespace DungeonCrawl
             str.Append("HitPoints: " + HP + "\n");
             str.Append("Strength: " + strength + "\n");
             str.Append("Magic Power: " + magicPower + "\n");
-            str.Append("Weapon Bonus: " + weaponBonus + "\n");
             str.Append("Magic Weapon Bonus: " + magicWeaponBonus + "\n");
-            str.Append("Armor: " + armorClass + "\n");
             str.Append("Speed: " + speed + "\n");
             return str.ToString();
         }

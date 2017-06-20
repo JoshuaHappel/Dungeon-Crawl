@@ -370,6 +370,7 @@
             this.openPlayerInfo.TabIndex = 37;
             this.openPlayerInfo.Text = "Player";
             this.openPlayerInfo.UseVisualStyleBackColor = true;
+            this.openPlayerInfo.Click += new System.EventHandler(this.openPlayerInfo_Click);
             // 
             // Form1
             // 

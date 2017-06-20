@@ -14,8 +14,6 @@ namespace DungeonCrawl.MOBs.Enemies
         {
             HP = 50;
             Strength = 8;
-            WeaponBonus = 2;
-            ArmorClass = 6;
             Speed = 4;
             CanAttack = true;
             Name = "Uruk-Hai";

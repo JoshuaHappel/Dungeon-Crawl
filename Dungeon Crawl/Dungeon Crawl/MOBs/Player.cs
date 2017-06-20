@@ -8,6 +8,7 @@ using DungeonCrawl.UnitClasses;
 using DungeonCrawl.MOBs.Enemies;
 using System.Data.OleDb;
 using Dungeon_Crawl;
+using Dungeon_Crawl.UnitClasses;
 
 namespace DungeonCrawl
 {
@@ -58,10 +59,10 @@ namespace DungeonCrawl
         public Player(int hp, int strength, int armor, int dam, int speed)
         {
             HP = hp;
-            ArmorClass = armor;
             Strength = strength;
             CanAttack = true;
             Speed = speed;
+            Class = new Peasant();
         }
         public Player()
         {
@@ -70,6 +71,7 @@ namespace DungeonCrawl
             Strength = 10;
             MagicPower = 10;
             Speed = 10;
+            Class = new Peasant();
         }
         public void deployParty()
         {

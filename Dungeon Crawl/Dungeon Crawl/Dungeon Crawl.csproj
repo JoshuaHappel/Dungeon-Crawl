@@ -87,12 +87,16 @@
     <Compile Include="UnitClasses\Healer.cs" />
     <Compile Include="UnitClasses\Mage.cs" />
     <Compile Include="UnitClasses\Marksman.cs" />
+    <Compile Include="UnitClasses\Peasant.cs" />
     <Compile Include="UnitClasses\UnitClass.cs" />
     <EmbeddedResource Include="CombatWindow.resx">
       <DependentUpon>CombatWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerInfoScreen.resx">
+      <DependentUpon>PlayerInfoScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

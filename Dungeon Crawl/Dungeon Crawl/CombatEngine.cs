@@ -57,7 +57,7 @@ namespace DungeonCrawl
         public static void attack(MobileObject a, MobileObject b)
         {
             if(b != null)
-            b.HP -= a.Damage - b.ArmorClass;
+            b.HP -= a.Damage;
         }
         public static void useSpecial(MobileObject user, MobileObject target)
         {

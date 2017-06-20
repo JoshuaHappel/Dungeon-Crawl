@@ -12,8 +12,6 @@ namespace DungeonCrawl.MOBs.Enemies
         {
             HP = 6;
             Strength = 1;
-            WeaponBonus = 0;
-            ArmorClass = 0;
             Speed = 2;
             CanAttack = true;
             Name = "Wraith";
