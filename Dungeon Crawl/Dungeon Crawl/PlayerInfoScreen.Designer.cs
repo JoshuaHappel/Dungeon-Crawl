@@ -50,6 +50,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.inventoryListBox = new System.Windows.Forms.ListBox();
             this.useButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.ally2Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -57,11 +59,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.characterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(10, 61);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -74,7 +77,7 @@
             this.groupBox1.Controls.Add(this.ally2Panel);
             this.groupBox1.Controls.Add(this.ally1Panel);
             this.groupBox1.Controls.Add(this.characterPanel);
-            this.groupBox1.Location = new System.Drawing.Point(93, 12);
+            this.groupBox1.Location = new System.Drawing.Point(91, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 240);
             this.groupBox1.TabIndex = 1;
@@ -258,14 +261,14 @@
             // inventoryListBox
             // 
             this.inventoryListBox.FormattingEnabled = true;
-            this.inventoryListBox.Location = new System.Drawing.Point(299, 12);
+            this.inventoryListBox.Location = new System.Drawing.Point(297, 3);
             this.inventoryListBox.Name = "inventoryListBox";
             this.inventoryListBox.Size = new System.Drawing.Size(120, 225);
             this.inventoryListBox.TabIndex = 2;
             // 
             // useButton
             // 
-            this.useButton.Location = new System.Drawing.Point(12, 41);
+            this.useButton.Location = new System.Drawing.Point(10, 32);
             this.useButton.Name = "useButton";
             this.useButton.Size = new System.Drawing.Size(75, 23);
             this.useButton.TabIndex = 3;
@@ -273,15 +276,33 @@
             this.useButton.UseVisualStyleBackColor = true;
             this.useButton.Click += new System.EventHandler(this.useButton_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(10, 91);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.useButton);
+            this.panel1.Controls.Add(this.inventoryListBox);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(426, 241);
+            this.panel1.TabIndex = 5;
+            // 
             // PlayerInfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 264);
-            this.Controls.Add(this.useButton);
-            this.Controls.Add(this.inventoryListBox);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(828, 549);
+            this.Controls.Add(this.panel1);
             this.Name = "PlayerInfoScreen";
             this.Text = "PlayerInfoScreen";
             this.groupBox1.ResumeLayout(false);
@@ -294,6 +315,7 @@
             this.characterPanel.ResumeLayout(false);
             this.characterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -322,5 +344,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ListBox inventoryListBox;
         private System.Windows.Forms.Button useButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

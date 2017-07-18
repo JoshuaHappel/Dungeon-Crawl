@@ -11,12 +11,23 @@ using System.Windows.Forms;
 
 namespace Dungeon_Crawl
 {
+    
     public partial class PlayerInfoScreen : Form
     {
         private Item usedItem;
         private List<Panel> panels = new List<Panel>();
         private Player play;
-
+        public Panel Panel1
+        {
+            get
+            {
+                return panel1;
+            }
+            set
+            {
+                panel1 = value;
+            }
+        }
         public Player Play
         {
             get
@@ -34,7 +45,6 @@ namespace Dungeon_Crawl
 
         public PlayerInfoScreen()
         {
-            
             InitializeComponent();
         }
         public void displayInventory()
@@ -46,8 +56,11 @@ namespace Dungeon_Crawl
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Owner.Show();
-            this.Close();
+            Owner.Controls.Remove(panel1);
+            foreach(Control c in Owner.Controls)
+            {
+                c.Visible = true;
+            }
         }
 
         public void displayParty()

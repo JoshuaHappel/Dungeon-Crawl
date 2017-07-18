@@ -27,7 +27,6 @@ namespace DungeonCrawl
             dung = new Dungeon();
             play = new Player();
             map[play.XCoor, play.YCoor].BackColor = Color.Black;
-            
         }
         private void populateMapArray()
         {
@@ -103,9 +102,12 @@ namespace DungeonCrawl
         private void openPlayerInfo_Click(object sender, EventArgs e)
         {
             PlayerInfoScreen pis = new PlayerInfoScreen();
-            pis.Play = play;
-            pis.Show(this);
-            this.Hide();
+            foreach(Control c in this.Controls)
+            {
+                c.Visible = false;
+            }
+            Controls.Add(pis.Panel1);
+            pis.Owner = this;
         }
 
         public void showRoomInventory()
