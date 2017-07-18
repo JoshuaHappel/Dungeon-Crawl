@@ -42,7 +42,6 @@ namespace Dungeon_Crawl
                 displayInventory();
             }
         }
-
         public PlayerInfoScreen()
         {
             InitializeComponent();
@@ -56,6 +55,7 @@ namespace Dungeon_Crawl
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            Form1.returnToOriginalSize();
             Owner.Controls.Remove(panel1);
             foreach(Control c in Owner.Controls)
             {

@@ -23,6 +23,7 @@ namespace DungeonCrawl
         public Form1()
         {
             InitializeComponent();
+            frm1 = this;
             populateMapArray();
             dung = new Dungeon();
             play = new Player();
@@ -98,15 +99,17 @@ namespace DungeonCrawl
             dung.getCurrentRoom(play).Items.Remove(dung.getCurrentRoom(play).Items.ElementAt(roomListBox.SelectedIndex));
             showRoomInventory();
         }
-
+        private static Size oldSize;
         private void openPlayerInfo_Click(object sender, EventArgs e)
         {
+            oldSize = Size;
             PlayerInfoScreen pis = new PlayerInfoScreen();
             foreach(Control c in this.Controls)
             {
                 c.Visible = false;
             }
             Controls.Add(pis.Panel1);
+            this.Size = pis.Panel1.Size;
             pis.Owner = this;
         }
 
@@ -118,8 +121,11 @@ namespace DungeonCrawl
                 roomListBox.Items.Add(i.ItemName);
             }
         }
-        
-  
+        public static void returnToOriginalSize()
+        {
+            frm1.Size = oldSize;
+        }
+        private static Form1 frm1;
         
         
     }

@@ -19,6 +19,7 @@ namespace DungeonCrawl
         private Random rand1 = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
         private List<MobileObject> enemies = new List<MobileObject>();//list to hold the enemies in a dungeon floor
         private Room[,] dungeon = new Room[5, 5];//two dimensional array to hold rooms and serve as map each index is a room
+        private List<Item> itemsToCopy = new List<Item>();
         private int numberOfEnemies;
         private int exitXCoor;
         private int exitYCoor;
@@ -91,11 +92,16 @@ namespace DungeonCrawl
             exitXCoor = rand1.Next(5);
             dungeon[exitXCoor, exitYCoor].DungeonExit = true;
             int numberOfDifferentItems = SQL_DAO.getItemDBLength();
+            for(int i = 0; i < numberOfDifferentItems; i++)
+            {
+                int id = i + 1;
+                itemsToCopy.Add(SQL_DAO.getItemInfoFromDB(id));
+                
+            }
             for (int i = 0; i < numberOfItems; i++)
             {
                 int item = rand1.Next(numberOfDifferentItems);
-                item++;
-                dungeon[rand1.Next(5), rand1.Next(5)].Items.Add(SQL_DAO.getItemInfoFromDB(item));
+                dungeon[rand1.Next(5), rand1.Next(5)].Items.Add(itemsToCopy.ElementAt(item));
             }
             numberOfEnemies = rand1.Next(4) + 1 + Floor;
             int enemytype = rand1.Next(11);
